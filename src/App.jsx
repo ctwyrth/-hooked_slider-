@@ -5,33 +5,34 @@ import "/node_modules/slick-carousel/slick/slick.css";
 import "/node_modules/slick-carousel/slick/slick-theme.css";
 
 function App() {
-   let settings = {
+   const settings = {
       dots: true,
       infinite: false,
+      swipeToSlide: true,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToScroll: 1,
       initialSlide: 0,
       responsive: [
          {
-            breakpoint: 1024,
+            breakpoint: 1200,
             settings: {
                slidesToShow: 3,
-               slidesToScroll: 3,
+               slidesToScroll: 1,
                infinite: true,
                dots: true,
             }
          },
          {
-            breakpoint: 600,
+            breakpoint: 900,
             settings: {
                slidesToShow: 2,
-               slidesToScroll: 2,
-               initialSlide: 2
+               slidesToScroll: 1,
+               initialSlide: 2,
             }
          },
          {
-            breakpoint: 480,
+            breakpoint: 600,
             settings: {
                slidesToShow: 1,
                slidesToScroll: 1,
@@ -43,18 +44,35 @@ function App() {
    return (
       <div className="container">
          <Slider {...settings}>
-            {sliderData.map((slide) => (
-               <div className="card">
-                  <div className="cardTitle">
-                     <h1>{slide.fname}</h1>
-                     <h2>{slide.lname}</h2>
-                  </div>
-                  <div className="cardContent">
-                     <p>{slide.age}</p>
+            {sliderData.map((slide, idx) => (
+               <div className="card" key={idx}>
+                  <div className="card-background" style={{backgroundImage: `url(${slide.image})`}}>
+                     <div className="cardTitle">
+                        <h3>{slide.fname}</h3>
+                        <h1>{slide.lname.toUpperCase()}</h1>
+                     </div>
+                     <div className="cardContent">
+                        <p>{slide.character}</p>
+                     </div>
                   </div>
                </div>
             ))}
          </Slider>
+         <div className="container">
+            <div className="slidesTest">
+               {sliderData.map((slide, idx) => (
+                  <div className="card2" style={{backgroundImage: `url(${slide.image})`}} key={idx}>
+                     <div className="cardTitle">
+                        <h3>{slide.fname}</h3>
+                        <h1>{slide.lname.toUpperCase()}</h1>
+                     </div>
+                     <div className="cardContent">
+                        <p>{slide.character}</p>
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
       </div>
    );
 }
@@ -63,42 +81,50 @@ const sliderData = [
    {
       fname: 'Harrison',
       lname: 'Ford',
-      age: '32'
+      character: 'Han Solo',
+      image: './assets/hansolo.jpg',
    },
    {
       fname: 'Carrie',
       lname: 'Fisher',
-      age: '20'
+      character: 'Princess Leia',
+      image: './assets/princessleia.jpg',
    },
    {
       fname: 'Mark',
-      lname: 'Hammil',
-      age: '19'
+      lname: 'Hamill',
+      character: 'Luke Skywalker',
+      image: './assets/lukeskywalker.jpg',
    },
    {
       fname: 'Anthony',
       lname: 'Daniels',
-      age: '30'
+      character: 'C-3PO',
+      image: './assets/c3po.jpg',
    },
    {
       fname: 'Alec',
-      lname: 'Guiness',
-      age: '55'
+      lname: 'Guinness',
+      character: 'Obi-wan Kenobi',
+      image: './assets/obiwan.jpg',
    },
    {
       fname: 'Peter',
       lname: 'Mayhew',
-      age: '42'
+      character: 'Chewbacca',
+      image: './assets/chewbacca.jpg',
    },
    {
       fname: 'Daisy',
       lname: 'Ridley',
-      age: '24'
+      character: 'Rey Skywalker',
+      image: './assets/reyskywalker.jpg',
    },
    {
       fname: 'Adam',
       lname: 'Driver',
-      age: '28'
+      character: 'Kylo Ren',
+      image: './assets/kyloren.jpg',
    },
 ]
 
