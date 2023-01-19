@@ -6,7 +6,7 @@
 }
 
 body {
-   background-color: azure;
+   background-color: rgb(233, 233, 233);
 }
 
 .container {
@@ -16,6 +16,12 @@ body {
 
 .slick-slide > div {
    margin: 0 10px;
+   transition: all .3s ease-in-out;
+}
+
+.slick-slide > div:hover {
+   z-index: 10;
+   transform: scale(1.2);
 }
 
 .slick-prev, .slick-next {
@@ -29,6 +35,7 @@ body {
 .slidesTest {
    display: flex;
    flex-direction: row;
+   flex-wrap: wrap;
    justify-content: space-between;
    align-items: center;
 }
@@ -59,7 +66,14 @@ body {
    background-repeat: no-repeat;
    border: 1px solid #000;
    border-radius: 6px;
+   min-width: 200px;
    height: 300px;
+   margin-bottom: 20px;
+   transition: all .3s ease-in-out;
+}
+
+.card2:hover {
+   transform: scale(1.2);
 }
 
 .cardTitle h1, .cardTitle h3, .cardContent p {
